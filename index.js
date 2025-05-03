@@ -21,7 +21,7 @@ app.post('/api/create-contact', async (req, res) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Brand': `${brand}`,
-                'X-CSRF-TOKEN': ''  
+                'X-CSRF-TOKEN': ''
             },
             body: JSON.stringify(contact)
         })
@@ -34,7 +34,4 @@ app.post('/api/create-contact', async (req, res) => {
     }
 })
 
-const PORT = process.env.PORT || 3001
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-})
+export default app  
