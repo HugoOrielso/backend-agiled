@@ -8,6 +8,10 @@ const app = express()
 app.use(cors({ origin: "*" }))
 app.use(express.json())
 
+app.get("/", (req,res)=>{
+    res.status(200).json({message: "on vercel"})
+})
+
 app.post('/api/create-contact', async (req, res) => {
     const apiToken = process.env.AGILED_API_TOKEN
     const brand = process.env.AGILED_BRAND
