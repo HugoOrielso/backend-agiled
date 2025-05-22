@@ -18,12 +18,11 @@ app.post('/api/create-contact', async (req, res) => {
     const { first_name, last_name, email, phone, project_scope, address, tags, note } = req.body;
 
     const contact = {
-        first_name, last_name, email, phone, note, tags,
+         last_name, email, phone, note, tags,
         addresses: [
             { address1: address }
         ],
         custom_fields: [
-            ...custom_fields,
             { key: "project_scope", value: project_scope }
         ],
         role: "Lead"
