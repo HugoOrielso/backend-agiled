@@ -19,6 +19,7 @@ app.post('/api/create-contact', async (req, res) => {
 
     const contact = {
         first_name, last_name, email, phone, note, tags,
+        job_title: project_scope,
         addresses: [
             { address1: address }
         ],
