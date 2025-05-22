@@ -8,8 +8,8 @@ const app = express()
 app.use(cors({ origin: "*" }))
 app.use(express.json())
 
-app.get("/", (req,res)=>{
-    res.status(200).json({message: "on vercel"})
+app.get("/", (req, res) => {
+    res.status(200).json({ message: "on vercel" })
 })
 
 app.post('/api/create-contact', async (req, res) => {
@@ -17,7 +17,17 @@ app.post('/api/create-contact', async (req, res) => {
     const brand = process.env.AGILED_BRAND
     const { first_name, last_name, email, phone, project_scope, address, tags, note } = req.body;
 
-    const contact = { first_name, last_name, email, phone, project_scope, address, tags, note, role: "Lead" };
+    const contact = {
+        first_name, last_name, email, phone, note, tags,
+        addresses: [
+            { address1: address }
+        ],
+        custom_fields: [
+            ...custom_fields,
+            { key: "project_scope", value: project_scope }
+        ],
+        role: "Lead"
+    };
 
     try {
         const response = await fetch(`https://my.agiled.app/api/v1/contacts?api_token=${apiToken}`, {
@@ -40,5 +50,5 @@ app.post('/api/create-contact', async (req, res) => {
     }
 })
 
-export default app 
+export default app
 
