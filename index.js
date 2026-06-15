@@ -110,8 +110,8 @@ app.post("/api/create-contact", async (req, res) => {
 app.post("/api/form-submitted", async (req, res) => {
   try {
     await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || "Moreno Stucco <onboarding@resend.dev>",
-      to: process.env.NOTIFICATION_EMAIL || "orielso.lozano15@gmail.com",
+      from: process.env.RESEND_FROM_EMAIL || "Moreno Stucco <onboarding@hugoorielso.com>",
+      to: process.env.NOTIFICATION_EMAIL || "hugooxxxorielso@gmail.com",
       subject: "Book a Visit submitted",
       html: `
         <div style="font-family: Arial, sans-serif; color: #111827;">
