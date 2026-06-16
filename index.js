@@ -110,24 +110,67 @@ app.post("/api/create-contact", async (req, res) => {
 app.post("/api/form-submitted", async (req, res) => {
   try {
     await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || "Moreno Stucco <onboarding@hugoorielso.com>",
-      to: process.env.NOTIFICATION_EMAIL || "hugooxxxorielso@gmail.com",
-      subject: "Book a Visit submitted",
+      from:
+        process.env.RESEND_FROM_EMAIL ||
+        "Moreno Stucco <onboarding@hugoorielso.com>",
+      to:
+        process.env.NOTIFICATION_EMAIL ||
+        "hugooxxxorielso@gmail.com",
+      subject: "New Book a Visit request",
       html: `
-        <div style="font-family: Arial, sans-serif; color: #111827;">
-          <h2>Book a Visit submitted</h2>
-          <p>Someone submitted the Book a Visit form.</p>
-          <p>Please review Agiled to see the contact details.</p>
+        <div style="margin:0;padding:0;background:#f3f6fb;font-family:Arial,Helvetica,sans-serif;color:#111827;">
+          <div style="max-width:620px;margin:0 auto;padding:32px 16px;">
+            
+            <div style="background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #e5e7eb;box-shadow:0 12px 30px rgba(15,23,42,0.08);">
+              
+              <div style="background:linear-gradient(135deg,#0B3A66,#1D75BB);padding:28px 32px;color:#ffffff;">
+                <h1 style="margin:0;font-size:24px;line-height:1.3;font-weight:700;">
+                  New Book a Visit request
+                </h1>
+                <p style="margin:8px 0 0;font-size:15px;line-height:1.5;color:#dbeafe;">
+                  A new visitor has submitted the Book a Visit form.
+                </p>
+              </div>
+
+              <div style="padding:32px;">
+                <p style="margin:0 0 18px;font-size:16px;line-height:1.6;color:#374151;">
+                  Someone has completed the form on the website. Please review the contact details and follow up from Agiled.
+                </p>
+
+                <div style="background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px;margin:24px 0;">
+                  <p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.04em;">
+                    Form submitted
+                  </p>
+                  <p style="margin:0;font-size:18px;font-weight:700;color:#111827;">
+                    Book a Visit
+                  </p>
+                </div>
+
+                <a href="https://app.agiled.app"
+                  style="display:inline-block;background:#1D75BB;color:#ffffff;text-decoration:none;font-size:15px;font-weight:700;padding:14px 22px;border-radius:999px;">
+                  Review in Agiled
+                </a>
+
+                <p style="margin:26px 0 0;font-size:13px;line-height:1.5;color:#6b7280;">
+                  This is an automatic notification sent after a form submission.
+                </p>
+              </div>
+
+            </div>
+
+            <p style="text-align:center;margin:18px 0 0;font-size:12px;color:#94a3b8;">
+              Moreno Stucco · Website notification
+            </p>
+          </div>
         </div>
       `,
     })
 
     return res.status(200).json({ ok: true })
   } catch (error) {
-    console.error(error)
+    console.error("Error sending notification email:", error)
     return res.status(500).json({ ok: false })
   }
 })
-
 
 export default app
