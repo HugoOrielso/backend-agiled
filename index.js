@@ -114,8 +114,7 @@ app.post("/api/form-submitted", async (req, res) => {
         process.env.RESEND_FROM_EMAIL ||
         "Moreno Stucco <onboarding@hugoorielso.com>",
       to:
-        process.env.NOTIFICATION_EMAIL ||
-        "hugooxxxorielso@gmail.com",
+        "andrea.marciales@siscomtec.ca",
       subject: "New Book a Visit request",
       html: `
         <div style="margin:0;padding:0;background:#f3f6fb;font-family:Arial,Helvetica,sans-serif;color:#111827;">
@@ -146,9 +145,9 @@ app.post("/api/form-submitted", async (req, res) => {
                   </p>
                 </div>
 
-                <a href="https://app.agiled.app"
+                <a href="https://crm.morenostucco.com/login"
                   style="display:inline-block;background:#1D75BB;color:#ffffff;text-decoration:none;font-size:15px;font-weight:700;padding:14px 22px;border-radius:999px;">
-                  Review in Agiled
+                  Review in crm
                 </a>
 
                 <p style="margin:26px 0 0;font-size:13px;line-height:1.5;color:#6b7280;">
