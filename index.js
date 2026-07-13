@@ -114,7 +114,7 @@ app.post("/api/form-submitted", async (req, res) => {
         process.env.RESEND_FROM_EMAIL ||
         "Moreno Stucco <onboarding@hugoorielso.com>",
       to:
-        "andrea.marciales@siscomtec.ca",
+        "orielso.lozano15@gmail.com",
       subject: "New Book a Visit request",
       html: `
         <div style="margin:0;padding:0;background:#f3f6fb;font-family:Arial,Helvetica,sans-serif;color:#111827;">
